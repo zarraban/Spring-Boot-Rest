@@ -1,0 +1,35 @@
+GET
+http://localhost:8080/api/v1/contacts
+
+{
+    "message": "List is empty by now!"
+}
+
+POST
+http://localhost:8080/api/v1/contacts
+{
+    "first_name":"Dani",
+    "last_name":"Alen"
+}
+
+{
+    "first_name":"Mark",
+    "last_name":"Kovalski"
+}
+
+
+
+PUT
+http://localhost:8080/api/v1/contacts/2
+{
+    "first_name":"Ann",
+    "last_name":"Kovalski"
+}
+
+
+DELETE
+http://localhost:8080/api/v1/contacts/2
+
+
+GET
+http://localhost:8080/api/v1/contacts/2
