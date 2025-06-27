@@ -6,6 +6,7 @@ import io.github.zarraban.Spring_Boot_Rest.entity.contact.ContactMapper;
 import io.github.zarraban.Spring_Boot_Rest.repository.contact.ContactRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,7 @@ public class ContactServiceImpl implements ContactService {
 
 
     @Override
+    @Transactional
     public Contact create(ContactRequestDTO request) {
         Objects.requireNonNull(request, "Param [request] must not be null");
         Contact contact = mapper.requestToContact(request);
@@ -36,6 +38,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Contact readById(Long id) {
         Objects.requireNonNull(id,
                 "Param [id] must not be null");
@@ -43,6 +46,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    @Transactional
     public boolean deleteById(Long id) {
         Objects.requireNonNull(id,
                 "Param [id] must not be null");
@@ -55,6 +59,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    @Transactional
     public Contact updateById(Long id, ContactRequestDTO request) {
         Objects.requireNonNull(id,
                 "Param [request] must not be null");
@@ -72,6 +77,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Contact> readAll() {
         return repository.findAll();
     }
